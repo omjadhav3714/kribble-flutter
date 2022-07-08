@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, library_prefixes
 
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -14,6 +14,7 @@ class PaintScreen extends StatefulWidget {
 
 class _PaintScreenState extends State<PaintScreen> {
   late IO.Socket _socket;
+  String? dataOfRoom;
 
   @override
   void initState() {
@@ -34,13 +35,27 @@ class _PaintScreenState extends State<PaintScreen> {
     }
 
     // listen to socket
-    _socket.onConnect((data) => {
-          print(widget.data),
-        });
+    _socket.onConnect(
+      (data) => {
+        _socket.on(
+          'updateRoom',
+          (roomData) {
+            setState(() {
+              dataOfRoom = roomData;
+            });
+            if (roomData['isJoin'] != true) {
+              // start timer
+            }
+          },
+        )
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(),
+    );
   }
 }
