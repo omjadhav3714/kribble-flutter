@@ -1,8 +1,12 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class PaintScreen extends StatefulWidget {
-  const PaintScreen({Key? key}) : super(key: key);
+  final Map data;
+  final String screenFrom;
+  const PaintScreen({required this.data, required this.screenFrom});
 
   @override
   State<PaintScreen> createState() => _PaintScreenState();
@@ -25,9 +29,13 @@ class _PaintScreenState extends State<PaintScreen> {
     });
     _socket.connect();
 
+    if (widget.screenFrom == 'createRoom') {
+      _socket.emit('create-game', widget.data);
+    }
+
     // listen to socket
     _socket.onConnect((data) => {
-          print(data),
+          print(widget.data),
         });
   }
 
