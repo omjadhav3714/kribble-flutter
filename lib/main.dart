@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kribble/home_screen.dart';
+import 'home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,13 +7,15 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Kribble',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       home: const HomeScreen(),
     );

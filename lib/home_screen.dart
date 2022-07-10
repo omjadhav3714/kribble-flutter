@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -17,15 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            "Create / Join Room to play",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-            ),
+            "Create/Join a room to play!",
+            style: TextStyle(color: Colors.black, fontSize: 24),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
@@ -40,18 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  textStyle: MaterialStateProperty.all(
-                    const TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  minimumSize: MaterialStateProperty.all(
-                    Size(MediaQuery.of(context).size.width / 2.5, 50),
-                  ),
-                ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepPurple.shade400),
+                    textStyle: MaterialStateProperty.all(
+                        TextStyle(color: Colors.white)),
+                    minimumSize: MaterialStateProperty.all(
+                        Size(MediaQuery.of(context).size.width / 2.5, 50))),
                 child: const Text(
                   "Create",
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
               ElevatedButton(
@@ -61,22 +55,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  textStyle: MaterialStateProperty.all(
-                    const TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  minimumSize: MaterialStateProperty.all(
-                    Size(MediaQuery.of(context).size.width / 2.5, 50),
-                  ),
-                ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.deepPurple.shade400),
+                    textStyle: MaterialStateProperty.all(
+                        TextStyle(color: Colors.white)),
+                    minimumSize: MaterialStateProperty.all(
+                        Size(MediaQuery.of(context).size.width / 2.5, 50))),
                 child: const Text(
                   "Join",
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

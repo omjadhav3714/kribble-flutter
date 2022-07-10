@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kribble/paint_screen.dart';
-import 'widgets/custom_text_field.dart';
+import 'paint_screen.dart';
+import './widgets/custom_text_field.dart';
 
 class JoinRoomScreen extends StatefulWidget {
   const JoinRoomScreen({Key? key}) : super(key: key);
 
   @override
-  State<JoinRoomScreen> createState() => _JoinRoomScreenState();
+  _JoinRoomScreenState createState() => _JoinRoomScreenState();
 }
 
 class _JoinRoomScreenState extends State<JoinRoomScreen> {
@@ -20,11 +20,10 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
         "nickname": _nameController.text,
         "name": _roomNameController.text
       };
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => PaintScreen(data: data, screenFrom: "joinRoom"),
-        ),
-      );
+
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              PaintScreen(data: data, screenFrom: 'joinRoom')));
     }
   }
 
@@ -41,9 +40,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               fontSize: 30,
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.08,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomTextField(
@@ -51,7 +48,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               hintText: "Enter your name",
             ),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomTextField(
@@ -59,7 +56,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               hintText: "Enter Room Name",
             ),
           ),
-          const SizedBox(height: 40),
+          SizedBox(height: 40),
           ElevatedButton(
             onPressed: joinRoom,
             child: const Text(
@@ -67,16 +64,12 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              textStyle: MaterialStateProperty.all(
-                const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              minimumSize: MaterialStateProperty.all(
-                Size(MediaQuery.of(context).size.width / 2.5, 50),
-              ),
-            ),
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.deepPurple.shade400),
+                textStyle:
+                    MaterialStateProperty.all(TextStyle(color: Colors.white)),
+                minimumSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width / 2.5, 50))),
           ),
         ],
       ),
